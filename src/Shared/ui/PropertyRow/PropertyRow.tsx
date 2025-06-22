@@ -1,14 +1,14 @@
 import classNames from "classnames";
-import type { AnalyticsData } from "../../../Modules/Load";
 import cls from "./PropertyRow.module.css";
+import type { AnalyticsData } from "@/Modules/Analytics";
 
 type PropertyRowProps = {
-	title: keyof AnalyticsData;
+	title: keyof AnalyticsData | string;
 	value: string | number;
 	isModal?: boolean;
 };
 
-const displayValues: Record<keyof AnalyticsData, string> = {
+const displayValues: Record<keyof AnalyticsData | string, string> = {
 	averageSpendGalactic: "средние расходы в галактических кредитах",
 	bigSpentAt: "день года с максимальными расходами",
 	bigSpentValue: "максимальная сумма расходов за день",

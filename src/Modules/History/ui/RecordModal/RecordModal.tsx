@@ -1,6 +1,6 @@
 import { Modal } from "../../../../Shared/ui/Modal/Modal.tsx";
 import { PropertyRow } from "../../../../Shared/ui/PropertyRow/PropertyRow.tsx";
-import type { AnalyticsRecord } from "../../../Load";
+import type { AnalyticsRecord } from "../../../Analytics";
 import cls from "./RecordModal.module.css";
 
 type RecordModalProps = {

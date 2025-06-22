@@ -1,5 +1,5 @@
 import type { AppId } from "../../../../Shared/types";
-import type { AnalyticsRecord } from "../../../Load";
+import type { AnalyticsRecord } from "../../../Analytics";
 import { useHistoryStore } from "./historyStore.ts";
 
 export const historyActions = {
