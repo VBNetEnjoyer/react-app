@@ -1,0 +1,11 @@
+{
+	"printWidth": 120,
+	"tabWidth": 4,
+	"trailingComma": "all",
+	"bracketSameLine": false,
+	"arrowParens": "always",
+	"singleAttributePerLine": true,
+	"requirePragma": false,
+	"useTabs": true,
+	"endOfLine": "auto"
+}

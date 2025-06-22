@@ -1,0 +1,25 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	background: #e6ccfa;
+	border-radius: 10px;
+	padding: 40px 20px;
+	text-align: center;
+	border: 1px solid #333;
+}
+
+.done, .loaded, .pending, .error {
+	background: transparent;
+}
+
+.error {
+	border-color: #FF5F00;
+}
+
+
+
+
+
+
+

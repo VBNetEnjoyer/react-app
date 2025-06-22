@@ -1,0 +1,63 @@
+import type { AnalyticsData } from "@/Modules/Analytics/model/types";
+import { $api } from "@/Shared/api/$api.ts";
+
+const expectedKeys = new Set([
+	"total_spend_galactic",
+	"less_spent_civ",
+	"rows_affected",
+	"big_spent_at",
+	"less_spent_at",
+	"big_spent_value",
+	"big_spent_civ",
+	"average_spend_galactic",
+	"less_spent_value",
+]);
+
+export class AnalyticsApi {
+	async uploadAndAggregate(
+		file: File,
+		onData: (done: boolean, data: AnalyticsData | null) => any,
+		onError: (err: string) => void,
+	): Promise<void> {
+		try {
+			await $api.uploadStream<RawAnalyticsData>("/aggregate", file, { rows: 15000 }, (done, data) => {
+				if (data) {
+					for (let key of Object.keys(data)) {
+						if (!expectedKeys.has(key)) {
+							onError("Ошибка подсчета статистики");
+						}
+					}
+					const modifiedData = {
+						totalSpendGalactic: data.total_spend_galactic,
+						lessSpentCiv: data.less_spent_civ,
+						rowsAffected: data.rows_affected,
+						bigSpentAt: data.big_spent_at,
+						lessSpentAt: data.less_spent_at,
+						bigSpentValue: data.big_spent_value,
+						bigSpentCiv: data.big_spent_civ,
+						averageSpendGalactic: data.average_spend_galactic,
+					};
+					onData(done, modifiedData);
+				} else {
+					onData(done, null);
+				}
+			});
+		} catch (error) {
+			onError("Ошибка подсчета статистики");
+		}
+	}
+}
+
+export const analyticsApi = new AnalyticsApi();
+
+type RawAnalyticsData = {
+	total_spend_galactic: number;
+	rows_affected: number;
+	less_spent_at: number;
+	big_spent_at: number;
+	less_spent_value: number;
+	big_spent_value: number;
+	average_spend_galactic: number;
+	big_spent_civ: string;
+	less_spent_civ: string;
+};

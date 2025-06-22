@@ -1,0 +1,14 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.title {
+	text-align: center;
+}
+
+.sendButton {
+	margin: 0 auto;
+}
+

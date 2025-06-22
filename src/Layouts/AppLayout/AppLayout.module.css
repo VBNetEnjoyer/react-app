@@ -1,0 +1,34 @@
+.root {
+	padding: 40px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 0px;
+}
+
+.headerLogo {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+
+	h1 {
+		font-weight: bold;
+		background: #CB81FF;
+		line-height: 150%;
+		padding: 0 4px;
+	}
+}
+
+.headerNavigation {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.main {
+	margin-top: 80px;
+}
+

@@ -1,0 +1,28 @@
+.root {
+	padding: 12px 24px;
+	border-radius: 10px;
+	font-weight: 500;
+	cursor: pointer;
+
+	&:not(.stateDisabled):hover {
+		opacity: 0.90;
+	}
+
+	&:not(.stateDisabled):active {
+		opacity: 0.7;
+	}
+}
+
+.green {
+	background: #2AE881;
+}
+
+.black {
+	background: #201B10;
+	color: white;
+}
+
+.stateDisabled {
+	cursor: default;
+	background: #C0C0C0;
+}

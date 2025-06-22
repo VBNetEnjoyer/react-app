@@ -1,0 +1,21 @@
+@import "reset.css";
+
+:root {
+	--surface: #FCE2FF;
+	--text-color: #201B10
+}
+
+body {
+	min-height: 100dvh;
+	background: var(--surface);
+}
+
+* {
+	font-family: Roboto, sans-serif;
+	color: var(--text-color);
+}
+
+
+svg {
+	flex-shrink: 0;
+}

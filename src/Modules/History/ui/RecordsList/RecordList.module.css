@@ -1,0 +1,9 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+

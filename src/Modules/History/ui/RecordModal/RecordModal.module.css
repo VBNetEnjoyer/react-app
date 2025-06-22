@@ -1,0 +1,9 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	height: 60vh;
+	width: 50vw;
+	overflow: auto;
+	padding: 16px;
+}
