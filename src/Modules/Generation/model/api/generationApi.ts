@@ -1,4 +1,4 @@
-import { $api } from "../../../../Shared/api/$api.ts";
+import { $api } from "@/Shared/api/$api.ts";
 
 export const generationApi = {
 	async generateFile() {

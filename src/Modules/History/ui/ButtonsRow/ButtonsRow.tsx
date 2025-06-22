@@ -10,7 +10,7 @@ export function ButtonsRow({ className }: { className: string }) {
 
 	const deleteAllHandler = useCallback(() => {
 		historyService.clearRecords();
-	}, [historyService]);
+	}, []);
 
 	const generateMoreButton = (
 		<NavLink to={"/generation"}>

@@ -19,7 +19,7 @@ export function RecordItem(props: {
 		if (record.isSuccess) {
 			onRecordClick(record);
 		}
-	}, [onRecordClick]);
+	}, [onRecordClick, record]);
 
 	return (
 		<div className={cls.row}>

@@ -76,25 +76,21 @@ export const $api = {
 	},
 
 	async downloadFile(url: string | URL, params: Record<string, any>) {
-		try {
-			const urlObj = createUrlWithParams(url, params);
+		const urlObj = createUrlWithParams(url, params);
 
-			const response = await fetch(urlObj.toString(), {
-				method: "GET",
-			});
+		const response = await fetch(urlObj.toString(), {
+			method: "GET",
+		});
 
-			const blob = await response.blob();
-			const downloadUrl = window.URL.createObjectURL(blob);
-			const a = document.createElement("a");
-			a.href = downloadUrl;
-			a.download = "generated.csv";
+		const blob = await response.blob();
+		const downloadUrl = window.URL.createObjectURL(blob);
+		const a = document.createElement("a");
+		a.href = downloadUrl;
+		a.download = "generated.csv";
 
-			document.body.appendChild(a);
-			a.click();
-			a.remove();
-			window.URL.revokeObjectURL(downloadUrl);
-		} catch (error) {
-			throw error;
-		}
+		document.body.appendChild(a);
+		a.click();
+		a.remove();
+		window.URL.revokeObjectURL(downloadUrl);
 	},
 };

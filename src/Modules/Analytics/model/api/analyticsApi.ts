@@ -22,7 +22,7 @@ export class AnalyticsApi {
 		try {
 			await $api.uploadStream<RawAnalyticsData>("/aggregate", file, { rows: 15000 }, (done, data) => {
 				if (data) {
-					for (let key of Object.keys(data)) {
+					for (const key of Object.keys(data)) {
 						if (!expectedKeys.has(key)) {
 							onError("Ошибка подсчета статистики");
 						}
@@ -42,7 +42,7 @@ export class AnalyticsApi {
 					onData(done, null);
 				}
 			});
-		} catch (error) {
+		} catch {
 			onError("Ошибка подсчета статистики");
 		}
 	}

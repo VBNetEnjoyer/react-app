@@ -11,12 +11,9 @@ export function RecordsList({ onRecordClick }: { onRecordClick: (record: Analyti
 	const records = useHistoryStore((state) => state.records);
 	const hasAnalyticsRecords = useHistoryStore(getHasAnalyticsRecords);
 
-	const deleteHandler = useCallback(
-		(id: AppId) => {
-			historyService.deleteRecord(id);
-		},
-		[historyService],
-	);
+	const deleteHandler = useCallback((id: AppId) => {
+		historyService.deleteRecord(id);
+	}, []);
 
 	return (
 		<div className={cls.root}>

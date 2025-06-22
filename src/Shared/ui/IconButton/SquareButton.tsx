@@ -23,12 +23,12 @@ type SquareButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function SquareButton(props: SquareButtonProps) {
-	const { className, children, color = "black", size = "s", disabled, ...rest } = props;
+	const { className, children, color = "black", size = "s", ...rest } = props;
 
 	return (
 		<button
+			className={classNames([cls.root, className, cls[color], cls[size]])}
 			{...rest}
-			className={classNames([cls.root, props.className, cls[color], cls[size]])}
 		>
 			{children}
 		</button>
