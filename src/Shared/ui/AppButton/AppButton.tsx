@@ -22,6 +22,7 @@ export function AppButton(props: AppButtonProps) {
 	return (
 		<button
 			{...rest}
+			disabled={disabled}
 			className={classNames([cls.root, className, cls[color]], { [cls.stateDisabled]: disabled })}
 		>
 			{children}

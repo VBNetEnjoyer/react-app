@@ -1,4 +1,4 @@
-import { dateReviver } from "@/Shared/lib/dateReviver.ts";
+import { dateReviver } from "@/Shared/lib/dateReviver/dateReviver.ts";
 
 export const $storage = {
 	setValue: (key: string, value: any) => {
@@ -16,7 +16,6 @@ export const $storage = {
 			if (storedValue === null) {
 				return defaultValue;
 			}
-			console.log(JSON.parse(storedValue, dateReviver));
 			return JSON.parse(storedValue, dateReviver);
 		} catch (error) {
 			console.error(`Ошибка чтения ${key} из localStorage`, error);

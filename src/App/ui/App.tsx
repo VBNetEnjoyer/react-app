@@ -5,8 +5,6 @@ import { AnalyticsPage } from "@/Modules/Analytics";
 import { GenerationPage } from "@/Modules/Generation";
 import { HistoryPage } from "@/Modules/History";
 
-// import { validateHistoryDataLoader } from "@/Modules/History/";
-
 function App() {
 	return (
 		<BrowserRouter>

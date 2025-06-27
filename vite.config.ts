@@ -1,5 +1,7 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+
 import * as path from "node:path";
 
 const ReactCompilerConfig = {
@@ -8,6 +10,11 @@ const ReactCompilerConfig = {
 
 // https://vite.dev/config/
 export default defineConfig({
+	test: {
+		globals: true,
+		environment: "jsdom",
+		setupFiles: ["./src/Config/tests/setup.ts"],
+	},
 	plugins: [
 		react({
 			babel: {

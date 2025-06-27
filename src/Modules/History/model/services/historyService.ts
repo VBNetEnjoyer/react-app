@@ -1,4 +1,4 @@
-import type { AnalyticsRecord } from "@/Modules/Analytics";
+import { type AnalyticsRecord, getSavedRecords } from "@/Modules/Analytics";
 import { historyApi } from "../api/historyApi.ts";
 import { useHistoryStore } from "../store/historyStore.ts";
 import { historyActions } from "../store/historyActions.ts";
@@ -10,7 +10,7 @@ export class HistoryService {
 	}
 
 	getSavedRecords() {
-		return historyApi.getSavedRecords();
+		return getSavedRecords();
 	}
 
 	/** Обновляет данные о записях в сторе */

@@ -68,19 +68,23 @@ export function Modal(props: ModalProps) {
 	const modal = (
 		<div
 			className={classNames(cls.Modal, mods, [className])}
+			data-testid="modal"
 			{...otherProps}
 		>
 			<div
 				className={classNames(cls.overlay)}
+				data-testid="modal-overlay"
 				onClick={closeHandler}
 			>
 				<div
 					className={classNames(cls.content)}
+					data-testid="modal-content"
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
 				>
 					<SquareButton
+						data-testid="modal-close-button"
 						className={classNames(cls.closeButton)}
 						onClick={closeHandler}
 					>

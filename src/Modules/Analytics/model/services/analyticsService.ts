@@ -1,7 +1,5 @@
 import { analyticsApi } from "@/Modules/Analytics/model/api/analyticsApi.ts";
 import { analyticsActions } from "@/Modules/Analytics/model/store/analyticsActions.ts";
-import { $storage } from "@/Shared/storage/$storage.ts";
-import { ANALYTICS_RECORDS_KEY } from "@/Shared/consts/localStorageKeys.ts";
 import type { AnalyticsData, AnalyticsRecord } from "@/Modules/Analytics/model/types";
 import { useAnalyticsStore } from "@/Modules/Analytics/model/store/analyticsStore.ts";
 
@@ -49,7 +47,7 @@ export class AnalyticsService {
 	private saveAnalyticsData() {
 		const analytics = useAnalyticsStore.getState();
 
-		const prevRecords = $storage.getValue(ANALYTICS_RECORDS_KEY, []);
+		const prevRecords = analyticsApi.getSavedRecords();
 		const record: AnalyticsRecord = {
 			id: window.crypto.randomUUID(),
 			isSuccess: analytics.done,
@@ -58,7 +56,7 @@ export class AnalyticsService {
 			data: analytics.done ? analytics.data! : undefined,
 		};
 
-		$storage.setValue(ANALYTICS_RECORDS_KEY, [record, ...prevRecords]);
+		analyticsApi.saveRecords(record, prevRecords);
 	}
 }
 

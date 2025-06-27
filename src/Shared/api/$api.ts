@@ -1,16 +1,6 @@
+import { createUrlWithParams } from "@/Shared/lib/createUrlWithParams/createUrlWithParams.ts";
+
 const prefix = "http://localhost:3000";
-
-const createUrlWithParams = (url: string | URL, params: Record<string, any>) => {
-	const urlObj = new URL(url, prefix);
-
-	Object.entries(params).forEach(([key, value]) => {
-		if (value !== undefined && value !== null) {
-			urlObj.searchParams.append(key, String(value));
-		}
-	});
-
-	return urlObj;
-};
 
 export const $api = {
 	async uploadStream<T>(
@@ -20,7 +10,7 @@ export const $api = {
 		onData: (done: boolean, data: T | null) => any,
 	) {
 		try {
-			const urlObj = createUrlWithParams(url, params);
+			const urlObj = createUrlWithParams(url, params, prefix);
 
 			const formData = new FormData();
 			formData.append("file", file);
@@ -76,7 +66,7 @@ export const $api = {
 	},
 
 	async downloadFile(url: string | URL, params: Record<string, any>) {
-		const urlObj = createUrlWithParams(url, params);
+		const urlObj = createUrlWithParams(url, params, prefix);
 
 		const response = await fetch(urlObj.toString(), {
 			method: "GET",

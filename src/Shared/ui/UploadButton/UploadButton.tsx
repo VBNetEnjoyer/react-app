@@ -50,6 +50,7 @@ export function UploadButton(props: UploadButtonProps) {
 	return (
 		<>
 			<input
+				data-testid="file-input"
 				type="file"
 				accept=".csv"
 				ref={fileInputRef}
@@ -72,7 +73,14 @@ export function UploadButton(props: UploadButtonProps) {
 					<>
 						<div className={cls.infoRow}>
 							<div className={classNames([cls.infoColumn, cls[state]])}>
-								{state === "pending" ? <div className={cls.spinner}></div> : fileName}
+								{state === "pending" ? (
+									<div
+										className={cls.spinner}
+										data-testid="upload-button-spinner"
+									></div>
+								) : (
+									fileName
+								)}
 							</div>
 
 							{(state === "loaded" || state === "error" || state === "done") && (

@@ -1,5 +1,7 @@
-import type { AnalyticsData } from "@/Modules/Analytics/model/types";
+import type { AnalyticsData, AnalyticsRecord } from "@/Modules/Analytics/model/types";
 import { $api } from "@/Shared/api/$api.ts";
+import { $storage } from "@/Shared/storage/$storage.ts";
+import { ANALYTICS_RECORDS_KEY } from "@/Shared/consts/localStorageKeys.ts";
 
 const expectedKeys = new Set([
 	"total_spend_galactic",
@@ -45,6 +47,14 @@ export class AnalyticsApi {
 		} catch {
 			onError("Ошибка подсчета статистики");
 		}
+	}
+
+	getSavedRecords() {
+		return $storage.getValue(ANALYTICS_RECORDS_KEY, []);
+	}
+
+	saveRecords(record: AnalyticsRecord, prevRecords: AnalyticsRecord[]) {
+		$storage.setValue(ANALYTICS_RECORDS_KEY, [record, ...prevRecords]);
 	}
 }
 
