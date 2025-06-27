@@ -20,6 +20,7 @@ export function AppLayout() {
 				</div>
 				<nav className={cls.headerNavigation}>
 					<AppNavLink
+						data-testid="analytics-link"
 						to="/"
 						text="CSV Аналитик"
 						icon={
@@ -31,6 +32,7 @@ export function AppLayout() {
 					/>
 
 					<AppNavLink
+						data-testid="generation-link"
 						to="generation"
 						text="CSV Генератор"
 						icon={
@@ -42,6 +44,7 @@ export function AppLayout() {
 					/>
 
 					<AppNavLink
+						data-testid="history-link"
 						to="history"
 						text="История"
 						icon={

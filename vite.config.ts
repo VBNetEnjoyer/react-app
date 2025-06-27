@@ -14,6 +14,9 @@ export default defineConfig({
 		globals: true,
 		environment: "jsdom",
 		setupFiles: ["./src/Config/tests/setup.ts"],
+		coverage: {
+			exclude: ["tests/mock.ts", "__mock__", "index.ts", "*.config.*", "main.tsx"],
+		},
 	},
 	plugins: [
 		react({

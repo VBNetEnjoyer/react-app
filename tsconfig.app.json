@@ -37,6 +37,7 @@
   },
   "include": [
 	"src",
+	"__mock__",
 	"vite.config.ts"
   ]
 }

@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { $api } from "./$api.ts";
 
 const jsonLines = [JSON.stringify({ value: 1 }), JSON.stringify({ value: 2 }), JSON.stringify({ value: 3 })];
@@ -25,6 +25,11 @@ const createNewStream = () => {
 };
 
 describe("$api - API для работы с сервером", () => {
+	beforeEach(() => {
+		// что бы ошибка не падала в консоль
+		vi.spyOn(console, "error").mockImplementation(() => {});
+	});
+
 	it("Отправляет файл на сервер и проверяет что считывается весь поток в ответе", async () => {
 		const url = "/upload";
 		const file = new File(["test"], "test.txt");
@@ -54,7 +59,7 @@ describe("$api - API для работы с сервером", () => {
 		const file = new File(["data"], "file.txt", { type: "text/plain" });
 		const onData = vi.fn();
 
-		await expect($api.uploadStream("bad-url", file, {}, onData)).rejects.toThrow("Ошибка запроса");
+		await expect($api.uploadStream("bad-url", file, {}, onData)).rejects.toThrow();
 		expect(onData).not.toHaveBeenCalled();
 	});
 

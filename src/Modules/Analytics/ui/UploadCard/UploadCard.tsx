@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { UploadButton, type UploadButtonStyle } from "@/Shared/ui/UploadButton/UploadButton.tsx";
 import { type AnalyticsSliceScheme } from "../../model/types";
-import { analyticsActions } from "@/Modules/Analytics/model/store/analyticsActions.ts";
 import cls from "./UploadCard.module.css";
 import classNames from "classnames";
 import { useAnalyticsStore } from "@/Modules/Analytics/model/store/analyticsStore.ts";
+import { analyticsService } from "@/Modules/Analytics/model/services/analyticsService.ts";
 
 export function UploadCard() {
 	const analytics = useAnalyticsStore((state) => state);
@@ -51,7 +51,7 @@ export function UploadCard() {
 		const file = e.dataTransfer?.files[0];
 
 		if (file) {
-			analyticsActions.setAnalyticsFile(file);
+			analyticsService.setFile(file);
 		}
 	}, []);
 
@@ -82,11 +82,11 @@ export function UploadCard() {
 	};
 
 	const uploadedHandler = (file: AnalyticsSliceScheme["file"]) => {
-		analyticsActions.setAnalyticsFile(file);
+		analyticsService.setFile(file);
 	};
 
 	const removeHandler = () => {
-		analyticsActions.setAnalyticsFile(undefined);
+		analyticsService.setFile(undefined);
 	};
 
 	return (

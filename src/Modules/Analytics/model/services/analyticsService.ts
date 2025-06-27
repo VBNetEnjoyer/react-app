@@ -1,6 +1,6 @@
 import { analyticsApi } from "@/Modules/Analytics/model/api/analyticsApi.ts";
 import { analyticsActions } from "@/Modules/Analytics/model/store/analyticsActions.ts";
-import type { AnalyticsData, AnalyticsRecord } from "@/Modules/Analytics/model/types";
+import type { AnalyticsData, AnalyticsRecord, AnalyticsSliceScheme } from "@/Modules/Analytics/model/types";
 import { useAnalyticsStore } from "@/Modules/Analytics/model/store/analyticsStore.ts";
 
 export class AnalyticsService {
@@ -57,6 +57,11 @@ export class AnalyticsService {
 		};
 
 		analyticsApi.saveRecords(record, prevRecords);
+	}
+
+	setFile(file: AnalyticsSliceScheme["file"]) {
+		const result = this.verifyFile(file);
+		if (result) analyticsActions.setAnalyticsFile(file);
 	}
 }
 
