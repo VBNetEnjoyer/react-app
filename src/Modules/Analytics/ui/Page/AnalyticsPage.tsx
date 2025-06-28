@@ -23,6 +23,7 @@ export function AnalyticsPage() {
 			</p>
 			<UploadCard />
 			<AppButton
+				data-testid="send-button"
 				className={cls.sendButton}
 				color={"green"}
 				disabled={!allowSend}

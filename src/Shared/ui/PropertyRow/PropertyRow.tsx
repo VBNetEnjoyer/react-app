@@ -19,9 +19,13 @@ const displayValues: Record<keyof AnalyticsData | string, string> = {
 	totalSpendGalactic: "общие расходы в галактических кредитах",
 };
 
-export function PropertyRow({ title, value, isModal }: PropertyRowProps) {
+export function PropertyRow(props: PropertyRowProps) {
+	const { title, value, isModal, ...rest } = props;
 	return (
-		<div className={classNames(cls.root, { [cls.modal]: isModal })}>
+		<div
+			{...rest}
+			className={classNames(cls.root, { [cls.modal]: isModal })}
+		>
 			<h4>{value}</h4>
 			<p>{displayValues[title]}</p>
 		</div>

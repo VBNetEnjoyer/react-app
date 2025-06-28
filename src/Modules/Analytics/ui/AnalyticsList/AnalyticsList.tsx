@@ -18,6 +18,7 @@ export function AnalyticsList() {
 			<div className={cls.root}>
 				{Object.entries(analyticsRecords).map(([key, value]) => (
 					<PropertyRow
+						data-testid="property-row"
 						key={key}
 						title={key}
 						value={value}

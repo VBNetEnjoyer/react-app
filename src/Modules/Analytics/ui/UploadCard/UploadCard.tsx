@@ -91,6 +91,7 @@ export function UploadCard() {
 
 	return (
 		<div
+			data-testid="upload-card"
 			className={classNames([cls.card, cls[cardState]])}
 			ref={uploadCardRef}
 		>

@@ -14,7 +14,9 @@ export function ButtonsRow({ className }: { className: string }) {
 
 	const generateMoreButton = (
 		<NavLink to={"/generation"}>
-			<AppButton>{hasAnalyticsRecords ? "Сгенерировать больше" : "Сгенерировать"}</AppButton>
+			<AppButton data-testid="generate-more-button">
+				{hasAnalyticsRecords ? "Сгенерировать больше" : "Сгенерировать"}
+			</AppButton>
 		</NavLink>
 	);
 
@@ -23,6 +25,7 @@ export function ButtonsRow({ className }: { className: string }) {
 			<div className={className}>
 				{generateMoreButton}{" "}
 				<AppButton
+					data-testid="clear-all-button"
 					color={"black"}
 					onClick={deleteAllHandler}
 				>

@@ -52,6 +52,7 @@ export function GenerationPage() {
 				/>
 			) : (
 				<AppButton
+					data-testid="generate-button"
 					color={"green"}
 					onClick={generateClickHandler}
 				>
